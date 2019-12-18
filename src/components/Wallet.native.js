@@ -4,7 +4,7 @@ import {
   SafeAreaView,
   View,
 } from 'react-native';
-import styles from '../styles/homePage.js';
+import styles from './pages/homePage/styles/homePage';
 import { Card, CardItem, Body, Left, Icon, Text, Spinner } from 'native-base';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

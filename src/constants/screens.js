@@ -1,4 +1,4 @@
 module.exports = {
   HOME: 'Home',
-  EXAMPLE: 'Example',  
+  SIGNUP: 'Signup',  
 };

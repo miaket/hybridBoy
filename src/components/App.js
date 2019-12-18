@@ -1,11 +1,13 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-named-as-default */
 import { NavLink, Route, Switch } from "react-router-dom";
 
-import HomePage from './HomePage';
-import ExamplePage from './ExamplePage';
-import FooPage from './containers/FooPage';
-import BarPage from './containers/BarPage';
+import HomePage from './pages/homePage/HomePage';
+import LoginPage from './pages/loginPage/LoginPage';
+import SignupPage from './pages/signupPage/SignupPage';
+import ErrorPage from './pages/errorPage/ErrorPage';
 import NotFoundPage from './NotFoundPage';
+import ROUTES from '../constants/ROUTES';
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
@@ -16,23 +18,24 @@ import { hot } from "react-hot-loader";
 
 class App extends React.Component {
   render() {
+    console.log('blau')
     const activeStyle = { color: 'blue' };
     return (
       <div>
         <div>
-          <NavLink exact to="/" activeStyle={activeStyle}>Home</NavLink>
+          <NavLink exact to={ROUTES.HOME} activeStyle={activeStyle}>Home</NavLink>
           {' | '}
-          <NavLink to="/example" activeStyle={activeStyle}>Example</NavLink>
+          <NavLink to={ROUTES.LOGIN} activeStyle={activeStyle}>Login</NavLink>
           {' | '}
-          <NavLink to="/foo" activeStyle={activeStyle}>Foo</NavLink>
+          <NavLink to={ROUTES.SIGNUP} activeStyle={activeStyle}>Signup</NavLink>
           {' | '}
-          <NavLink to="/bar" activeStyle={activeStyle}>Bar</NavLink>
+          <NavLink to={ROUTES.ERROR} activeStyle={activeStyle}>Error</NavLink>
         </div>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/example" component={ExamplePage} />
-          <Route path="/foo" component={FooPage} />
-          <Route path="/bar" component={BarPage} />
+          <Route exact path={ROUTES.HOME} component={HomePage} />
+          <Route path={ROUTES.LOGIN} component={LoginPage} />
+          <Route path={ROUTES.SIGNUP} component={SignupPage} />
+          <Route path={ROUTES.ERROR} component={ErrorPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>
