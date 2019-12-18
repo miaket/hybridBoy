@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import transitionConfig from  '../utils/transitionConfig';

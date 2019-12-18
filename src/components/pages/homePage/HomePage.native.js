@@ -6,14 +6,15 @@ import {
   View,
   StatusBar,
   DeviceEventEmitter,
+  NativeModules
 } from 'react-native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
-import styles from '../styles/homePage.js';
-import navigate from '../utils/navigate';
-import { EXAMPLE } from '../constants/screens';
+import styles from './styles/homePage.js';
+import navigate from '../../../utils/navigate';
+import { SIGNUP } from '../../../constants/screens';
 import { Content, Button, Text } from 'native-base';
 import { connect } from 'react-redux';
-import Wallet from './Wallet';
+import Wallet from '../../../components/Wallet';
 
 const onTest = event => {
   console.log(event);  
@@ -21,7 +22,6 @@ const onTest = event => {
 
 DeviceEventEmitter.addListener('onTest', onTest);
 
-import {NativeModules} from 'react-native';
 console.log("NativeModules", NativeModules);
 const myModule = NativeModules.TestModule;
 
@@ -41,7 +41,7 @@ class HomePage extends React.Component {
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Content>
-                <Button primary onPress={() => navigate(navigation, EXAMPLE, false)}>
+                <Button primary onPress={() => navigate(navigation, SIGNUP, false)}>
                   <Text> This is a button </Text>
                 </Button>
               </Content>
