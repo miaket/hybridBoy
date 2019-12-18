@@ -3,7 +3,7 @@
 import { NavLink, Route, Switch } from "react-router-dom";
 
 import HomePageContainer from './pages/homePage/HomePageContainer';
-import LoginPage from './pages/loginPage/LoginPage';
+import LoginPageContainer from './pages/loginPage/LoginPageContainer';
 import SignupPage from './pages/signupPage/SignupPage';
 import ErrorPage from './pages/errorPage/ErrorPage';
 import NotFoundPage from './NotFoundPage';
@@ -33,7 +33,7 @@ class App extends React.Component {
         </div>
         <Switch>
           <Route exact path={ROUTES.HOME} component={HomePageContainer} />
-          <Route path={ROUTES.LOGIN} component={LoginPage} />
+          <Route path={ROUTES.LOGIN} component={LoginPageContainer} />
           <Route path={ROUTES.SIGNUP} component={SignupPage} />
           <Route path={ROUTES.ERROR} component={ErrorPage} />
           <Route component={NotFoundPage} />
