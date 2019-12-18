@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 import styles from './styles/homePage.js';
-import navigate from '../../../utils/navigate';
-import { SIGNUP } from '../../../constants/screens';
+import navigate from '../../../../utils/navigate';
+import { SIGNUP } from '../../../../constants/screens';
 import { Content, Button, Text } from 'native-base';
 import { connect } from 'react-redux';
-import Wallet from '../../../components/Wallet';
+import Wallet from '../../../../components/Wallet';
 
 const onTest = event => {
   console.log(event);  
@@ -27,7 +27,9 @@ const myModule = NativeModules.TestModule;
 
 class HomePage extends React.Component {
   render() {
+    const {funds} = this.props;
     console.log("NativeModules", NativeModules);
+    console.log('funds', funds)
     // console.log(myModule.getName())
     const { navigation } = this.props;
     return (
@@ -44,6 +46,7 @@ class HomePage extends React.Component {
                 <Button primary onPress={() => navigate(navigation, SIGNUP, false)}>
                   <Text> This is a button </Text>
                 </Button>
+                <Text>{funds}</Text>
               </Content>
               <Wallet />
             </View>
