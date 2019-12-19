@@ -5,7 +5,7 @@ import ContentBlock from '../../elements/contentBlock/ContentBlock';
 import InputButton from '../../elements/inputButton/InputButton';
 import InputText from '../../elements/inputText/InputText';
 
-class ExamplePage extends React.Component {
+class SignupPage extends React.Component {
   render() {
     return (
       <PageContainer>
@@ -36,5 +36,9 @@ class ExamplePage extends React.Component {
 }
 
 //alterar rotas com history.push apos importar navigationServices!
-
-export default ExamplePage;
+/*
+bebê nativo vai importar o navservice e trigar o change!
+import NavigationService from 'path-to-NavigationService.js';
+NavigationService.navigate('ChatScreen', { userName: 'Lucy' });
+*/
+export default SignupPage;
