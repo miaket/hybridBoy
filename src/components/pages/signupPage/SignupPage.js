@@ -27,8 +27,8 @@ class SignupPage extends React.Component {
           />
         </ContentBlock>
         <ContentBlock>
-          <InputButton>Signup</InputButton>
           <InputButton>Cancel</InputButton>
+          <InputButton>Sign up</InputButton>
         </ContentBlock>
       </PageContainer>
     );
