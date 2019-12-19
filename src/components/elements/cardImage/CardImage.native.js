@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, Dimensions } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Text, Body, View } from 'native-base';
+import { Image } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-base';
 
 const CardImage = ({image, description}) => {
   return (
