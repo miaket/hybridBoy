@@ -1,13 +1,15 @@
+import React from 'react';
 // eslint-disable-next-line import/named
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import transitionConfig from  '../utils/transitionConfig';
-import HomePage from './pages/homePage/HomePage';
+import NavigationService from '../utils/navigationService/NavigationService.native';
+import HomePageContainer from './pages/homePage/HomePageContainer';
 import SignupPage from './pages/signupPage/SignupPage';
 
 const MainNavigator = createStackNavigator(
   {
-    Home: {screen: HomePage},
+    Home: {screen: HomePageContainer},
     Signup: {screen: SignupPage},
   },
   {
@@ -17,6 +19,16 @@ const MainNavigator = createStackNavigator(
   }
 );
 
-const App = createAppContainer(MainNavigator);
+const AppContainer  = createAppContainer(MainNavigator);
 
-export default App;
+export default class App extends React.Component {
+  render() {
+    return (
+      <AppContainer
+        ref={navigatorRef => {
+          NavigationService.setTopLevelNavigator(navigatorRef);
+        }}
+      />
+    );
+  }
+}
