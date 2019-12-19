@@ -11,6 +11,8 @@ import ROUTES from '../constants/ROUTES';
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
+import { Router  } from "react-router-dom";
+import history from "../utils/navigationService/NavigationService";
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -21,24 +23,26 @@ class App extends React.Component {
     console.log('blau')
     const activeStyle = { color: 'blue' };
     return (
-      <div>
+      <Router history={history}>
         <div>
-          <NavLink exact to={ROUTES.HOME} activeStyle={activeStyle}>Home</NavLink>
-          {' | '}
-          <NavLink to={ROUTES.LOGIN} activeStyle={activeStyle}>Login</NavLink>
-          {' | '}
-          <NavLink to={ROUTES.SIGNUP} activeStyle={activeStyle}>Signup</NavLink>
-          {' | '}
-          <NavLink to={ROUTES.ERROR} activeStyle={activeStyle}>Error</NavLink>
+          <div>
+            <NavLink exact to={ROUTES.HOME} activeStyle={activeStyle}>Home</NavLink>
+            {' | '}
+            <NavLink to={ROUTES.LOGIN} activeStyle={activeStyle}>Login</NavLink>
+            {' | '}
+            <NavLink to={ROUTES.SIGNUP} activeStyle={activeStyle}>Signup</NavLink>
+            {' | '}
+            <NavLink to={ROUTES.ERROR} activeStyle={activeStyle}>Error</NavLink>
+          </div>
+            <Switch>
+              <Route exact path={ROUTES.HOME} component={HomePageContainer} />
+              <Route path={ROUTES.LOGIN} component={LoginPageContainer} />
+              <Route path={ROUTES.SIGNUP} component={SignupPage} />
+              <Route path={ROUTES.ERROR} component={ErrorPage} />
+              <Route component={NotFoundPage} />
+            </Switch>
         </div>
-        <Switch>
-          <Route exact path={ROUTES.HOME} component={HomePageContainer} />
-          <Route path={ROUTES.LOGIN} component={LoginPageContainer} />
-          <Route path={ROUTES.SIGNUP} component={SignupPage} />
-          <Route path={ROUTES.ERROR} component={ErrorPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
-      </div>
+      </Router>
     );
   }
 }
