@@ -4,15 +4,16 @@ import styles from './styles/pageContainer';
 import {
   SafeAreaView,
   View,
+  ScrollView
 } from 'react-native';
 
 const PageContainer = ({
   children
 }) => (
   <SafeAreaView>
-    <View style={styles.pageContainer}>
+    <ScrollView  style={styles.pageContainer}>
       { children }
-    </View>
+    </ScrollView >
   </SafeAreaView>
 );
 
