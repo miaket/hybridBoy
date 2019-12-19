@@ -1,9 +1,8 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-named-as-default */
-import { NavLink, Route, Switch } from "react-router-dom";
-
+import { NavLink, Route, Switch, Router } from "react-router-dom";
 import HomePageContainer from './pages/homePage/HomePageContainer';
-import LoginPageContainer from './pages/loginPage/LoginPageContainer';
+import LoginPage from './pages/loginPage/LoginPage';
 import SignupPage from './pages/signupPage/SignupPage';
 import ErrorPage from './pages/errorPage/ErrorPage';
 import NotFoundPage from './NotFoundPage';
@@ -11,7 +10,6 @@ import ROUTES from '../constants/ROUTES';
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
-import { Router  } from "react-router-dom";
 import history from "../utils/navigationService/NavigationService";
 
 // This is a class-based component because the current
@@ -20,7 +18,6 @@ import history from "../utils/navigationService/NavigationService";
 
 class App extends React.Component {
   render() {
-    console.log('blau')
     const activeStyle = { color: 'blue' };
     return (
       <Router history={history}>
@@ -36,7 +33,7 @@ class App extends React.Component {
           </div>
             <Switch>
               <Route exact path={ROUTES.HOME} component={HomePageContainer} />
-              <Route path={ROUTES.LOGIN} component={LoginPageContainer} />
+              <Route path={ROUTES.LOGIN} component={LoginPage} />
               <Route path={ROUTES.SIGNUP} component={SignupPage} />
               <Route path={ROUTES.ERROR} component={ErrorPage} />
               <Route component={NotFoundPage} />

@@ -6,11 +6,13 @@ import transitionConfig from  '../utils/transitionConfig';
 import NavigationService from '../utils/navigationService/NavigationService.native';
 import HomePageContainer from './pages/homePage/HomePageContainer';
 import SignupPage from './pages/signupPage/SignupPage';
+import LoginPage from './pages/loginPage/LoginPage';
 
 const MainNavigator = createStackNavigator(
   {
     Home: {screen: HomePageContainer},
     Signup: {screen: SignupPage},
+    Login: {screen: LoginPage},
   },
   {
     initialRouteName: 'Home',
