@@ -9,5 +9,5 @@ import {
 export default StyleSheet.create({
   button: {
     margin: 8
-  },
+  }
 });
