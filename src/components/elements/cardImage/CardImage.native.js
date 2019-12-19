@@ -4,15 +4,13 @@ import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-b
 
 const CardImage = ({image, description}) => {
   return (
-    <Container>
-      <Header />
-      <Content>
+
         <Card style={{flex: 0}}>
           <CardItem>
             <Body>
               <Image
                 source={{uri: image}}
-                style={{flex: 1,
+                style={{
                   height: 200,
                   width: '100%'
                 }}
@@ -28,8 +26,7 @@ const CardImage = ({image, description}) => {
             </Body>
           </CardItem>
         </Card>
-      </Content>
-    </Container>
+
   );
 }
 

@@ -6,8 +6,7 @@ const mainTitle = ({
   inputLabel,
   inputType
 }) => {
-  const secureTextEntry = inputType === 'password' ? true : false
-  ;
+  const secureTextEntry = inputType === 'password' ? true : false;
   return (
     <>
       <Item stackedLabel>
