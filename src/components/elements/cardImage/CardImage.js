@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles/card.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, Typography, CardContent } from '@material-ui/core';
 
