@@ -6,6 +6,7 @@ import { Card, CardMedia, Typography, CardContent } from '@material-ui/core';
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
+    margin: 16
   },
   media: {
     height: 140,

@@ -8,6 +8,6 @@ import {
 
 export default StyleSheet.create({
   pageContainer: {
-    padding: 24,
+    padding: 16,
   },
 });
