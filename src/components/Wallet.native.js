@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   View,
 } from 'react-native';
-import styles from './pages/homePage/content/styles/homePage';
 import { Card, CardItem, Body, Left, Icon, Text, Spinner } from 'native-base';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -26,14 +25,14 @@ class Wallet extends React.Component {
     return (
     <>
       <SafeAreaView>
-        <View style={styles.body}>
-          <View style={styles.sectionContainer}>
+        <View >
+          <View >
             <Card>
-              <CardItem style={styles.card}>
+              <CardItem >
                 <Text style={{ color: 'white' }}>Wallet</Text>
               </CardItem>
               {wallet.funds ? (
-                <CardItem style={styles.card}>
+                <CardItem >
                   <Left>
                     <Icon style={{ color: 'white' }} name="card" />
                     <Body>
@@ -43,7 +42,7 @@ class Wallet extends React.Component {
                   </Left>
                 </CardItem>
               ) : (
-                <CardItem style={styles.card}>
+                <CardItem >
                   <Spinner color='white' />
                 </CardItem>
               )}

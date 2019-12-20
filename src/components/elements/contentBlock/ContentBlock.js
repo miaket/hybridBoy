@@ -4,30 +4,16 @@ import './styles/contentBlock.scss';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    '& .MuiTextField-root': {
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(1),
-      width: 250,
-    },
-    '& .MuiButton-root': {
-      marginRight: theme.spacing(1),
-      marginTop: theme.spacing(1),
-    },
-  },
-}));
-
 const ContentBlock = ({
-  children
+  children,
+  flexDirection
 }) => {
-  const classes = useStyles();
   return (
   <div
     className="content-block"
   >
     <Grid
-      column
+      container={flexDirection}
       item xs={12}
       >
       { children }

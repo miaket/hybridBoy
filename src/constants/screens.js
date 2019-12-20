@@ -1,4 +1,5 @@
 module.exports = {
   HOME: 'Home',
-  SIGNUP: 'Signup',  
+  SIGNUP: 'Signup',
+  LOGIN: 'Login',
 };

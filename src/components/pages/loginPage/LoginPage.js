@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../../actions/walletActions';
 import PageContainer from '../../elements/pageContainer/PageContainer';
 import MainTitle from '../../elements/mainTitle/MainTitle';
 import ContentBlock from '../../elements/contentBlock/ContentBlock';
 import InputButton from '../../elements/inputButton/InputButton';
 import InputText from '../../elements/inputText/InputText';
 
-class SignupPage extends React.Component {
+// Since this component is simple and static, there's no parent container for it.
+class LoginPage extends Component {
   render() {
     return (
       <PageContainer>
         <MainTitle>
-          Signup
+          Login
         </MainTitle>
         <ContentBlock>
           <InputText
@@ -21,24 +25,29 @@ class SignupPage extends React.Component {
             inputLabel={'Password'}
             inputType="password"
           />
-          <InputText
-            inputLabel={'Password confirmation'}
-            inputType="password"
-          />
         </ContentBlock>
         <ContentBlock>
-          <InputButton>Cancel</InputButton>
           <InputButton>Sign up</InputButton>
+          <InputButton>Login</InputButton>
         </ContentBlock>
       </PageContainer>
     );
   }
 }
 
-//alterar rotas com history.push apos importar navigationServices!
-/*
-bebê nativo vai importar o navservice e trigar o change!
-import NavigationService from 'path-to-NavigationService.js';
-NavigationService.navigate('ChatScreen', { userName: 'Lucy' });
-*/
-export default SignupPage;
+function mapStateToProps(state) {
+  return {
+    funds: state.wallet.funds
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginPage);
