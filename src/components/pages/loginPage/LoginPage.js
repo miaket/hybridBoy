@@ -69,16 +69,19 @@ class LoginPage extends Component {
 
   handleLoginButton = () => {
     const { loginRequest } = this.props;
-    console.log('click')
     this.validateForm().then((response) =>{
       if (response === true){
         this.clearErrorMsg();
         loginRequest();
-        this.navigationRef.current.navigationFunction('/signup')
+        this.navigationRef.current.navigationFunction(ROUTES.HOME)
       } else {
         this.setErrorMsg(response.errors[0]);
       }
     })
+  }
+
+  handleSignupButton = () => {
+    this.navigationRef.current.navigationFunction(ROUTES.SIGNUP)
   }
 
   render() {
@@ -104,13 +107,10 @@ class LoginPage extends Component {
           />
         </ContentBlock>
         <ContentBlock>
-          <InputButton>Sign up</InputButton>
-          <InputButton
-            onClick={this.handleLoginButton}
-            navigateTo={ROUTES.HOME}
-            >
+          <NavigationAction ref={this.navigationRef}/>
+          <InputButton onClick={this.handleSignupButton}>Sign up</InputButton>
+          <InputButton onClick={this.handleLoginButton}>
             Login
-            <NavigationAction ref={this.navigationRef}/>
           </InputButton>
           {(errorMessage && errorMessage.length > 0) ? (
             <AlertText>
