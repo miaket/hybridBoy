@@ -10,4 +10,7 @@ export default {
   wallet: {
     funds: null,
   },
+  dishes: {
+    data:[]
+  }
 };
