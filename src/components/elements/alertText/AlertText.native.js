@@ -6,7 +6,7 @@ import styles from './styles/alertText';
 const mainTitle = ({
   children
 }) => (
-  <Text style={styles.title}>
+  <Text style={styles.alertText}>
     { children }
   </Text>
 );

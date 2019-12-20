@@ -6,8 +6,7 @@ const mainTitle = ({
   children
 }) => (
   <p className="alert-text">
-    {console.log('ea',children)}
-    *{ children }
+    { children }
   </p>
 );
 

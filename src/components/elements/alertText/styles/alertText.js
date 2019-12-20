@@ -9,7 +9,7 @@ import {
 export default StyleSheet.create({
   alertText: {
     margin: 8,
-    fontSize: 8,
+    fontSize: 12,
     color: '#f44336'
   },
 });

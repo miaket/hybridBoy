@@ -9,10 +9,10 @@ import AlertText from '../../elements/alertText/AlertText';
 const yup = require('yup');
 
 let schema = yup.object().shape({
-  username: yup.string().required('Username is required'),
-  password: yup.string().required('Password is required'),
+  username: yup.string().required('*Username is required'),
+  password: yup.string().required('*Password is required'),
   passwordConfirmation: yup.string()
-     .oneOf([yup.ref('password'), null], 'Passwords must match')
+     .oneOf([yup.ref('password'), null], '*Passwords must match')
 });
 
 class SignupPage extends React.Component {
@@ -94,16 +94,12 @@ class SignupPage extends React.Component {
         </ContentBlock>
         <ContentBlock>
           <InputButton>Cancel</InputButton>
-          <InputButton
-            onClick={this.validateForm}
-          >
+          <InputButton onClick={this.validateForm}>
             Sign up
           </InputButton>
-          {errorMessage && 
-            <AlertText>
-              { errorMessage }
-            </AlertText>
-          }
+          <AlertText>
+            { errorMessage }
+          </AlertText>
         </ContentBlock>
       </PageContainer>
     );
