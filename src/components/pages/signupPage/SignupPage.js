@@ -1,10 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { signupRequest } from '../../../reducers/authReducer';
 import PageContainer from '../../elements/pageContainer/PageContainer';
 import MainTitle from '../../elements/mainTitle/MainTitle';
 import ContentBlock from '../../elements/contentBlock/ContentBlock';
 import InputButton from '../../elements/inputButton/InputButton';
 import InputText from '../../elements/inputText/InputText';
 import AlertText from '../../elements/alertText/AlertText';
+import ROUTES from '../../../constants/ROUTES';
+import NavigationAction from '../../elements/navigationAction/NavigationAction';
 
 const yup = require('yup');
 
@@ -25,10 +30,10 @@ class SignupPage extends React.Component {
         passwordConfirmation: ''
       },
       formStatus:{
-        isValid: false,
         errorMessage: ''
       }
     };
+    this.navigationRef = React.createRef();
   }
 
   handleChange = ( name, value ) => {
@@ -37,17 +42,14 @@ class SignupPage extends React.Component {
     this.setState({ formValues });
   };
 
+  setErrorMsg = (val) => {
+    const { formStatus } = this.state;
+    formStatus.errorMessage = val;
+    this.setState({ formStatus })
+  }
+
   validateForm = () => {
-    const { formValues: {username, password, passwordConfirmation}, formStatus } = this.state;
-    const setErrorMsg = (val) => {
-      formStatus.errorMessage = val;
-      this.setState({ formStatus })
-    }
-    const validatedForm = () => {
-      formStatus.errorMessage = '';
-      formStatus.isValid = true;
-      this.setState({ formStatus })
-    }
+    const { formValues: {username, password, passwordConfirmation} } = this.state;
     
     return schema
       .validate({
@@ -57,13 +59,34 @@ class SignupPage extends React.Component {
         },
         { abortEarly: true })
       .then(function() {
-        validatedForm();
+        return true;
       })
       .catch(function(err) {
         console.log(err);
-        setErrorMsg (err.errors[0])
+        return err;
       });
   };
+
+  handleSignupButton = () => {
+    const { signupRequest } = this.props;
+    const { formValues: {username, password} } = this.state;
+    const formFields = {username, password}
+
+    this.validateForm().then((response) =>{
+      if (response === true){
+        this.setErrorMsg('');
+        signupRequest(formFields).then(
+          this.navigationRef.current.navigationFunction(ROUTES.LOGIN)
+        );
+      } else {
+        this.setErrorMsg(response.errors[0]);
+      }
+    })
+  }
+
+  handleCancelButton = () => {
+    this.navigationRef.current.navigationFunction(ROUTES.LOGIN)
+  }
 
   render() {
     const { formStatus:{errorMessage} } = this.state;
@@ -93,8 +116,9 @@ class SignupPage extends React.Component {
           />
         </ContentBlock>
         <ContentBlock>
-          <InputButton>Cancel</InputButton>
-          <InputButton onClick={this.validateForm}>
+          <NavigationAction ref={this.navigationRef}/>
+          <InputButton onClick={this.handleCancelButton}>Cancel</InputButton>
+          <InputButton onClick={this.handleSignupButton}>
             Sign up
           </InputButton>
           <AlertText>
@@ -106,10 +130,18 @@ class SignupPage extends React.Component {
   }
 }
 
-//alterar rotas com history.push apos importar navigationServices!
-/*
-bebê nativo vai importar o navservice e trigar o change!
-import NavigationService from 'path-to-NavigationService.js';
-NavigationService.navigate('ChatScreen', { userName: 'Lucy' });
-*/
-export default SignupPage;
+function mapStateToProps() {
+  return {
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    signupRequest: bindActionCreators(signupRequest, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignupPage);

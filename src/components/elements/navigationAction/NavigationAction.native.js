@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NavigationService from '../../../utils/navigationService/NavigationService';
 
-const NavigationAction = React.forwardRef((ref) => {
+const NavigationAction = React.forwardRef((props, ref) => {
   React.useImperativeHandle(ref, () => ({
     navigationFunction(navigateTo) {
       if (navigateTo){

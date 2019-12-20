@@ -14,6 +14,7 @@ export default {
     data:[]
   },
   appAuth: {
-    isLogged: false
+    isLogged: false,
+    isSignedup: false
   }
 };

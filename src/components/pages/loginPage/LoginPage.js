@@ -43,19 +43,13 @@ class LoginPage extends Component {
     formStatus.errorMessage = val;
     this.setState({ formStatus })
   }
-  clearErrorMsg = () => {
-    const { formStatus } = this.state;
-    formStatus.errorMessage = '';
-    this.setState({ formStatus })
-  }
   
   validateForm = () => {
-    const { formValues: {username, password, passwordConfirmation} } = this.state;
+    const { formValues: {username, password} } = this.state;
     return schema
       .validate({
         username,
-        password,
-        passwordConfirmation
+        password
         },
         { abortEarly: true })
       .then(function() {
@@ -69,10 +63,12 @@ class LoginPage extends Component {
 
   handleLoginButton = () => {
     const { loginRequest } = this.props;
+    const { formValues } = this.state;
+
     this.validateForm().then((response) =>{
       if (response === true){
-        this.clearErrorMsg();
-        loginRequest();
+        this.setErrorMsg('');
+        loginRequest(formValues);
         this.navigationRef.current.navigationFunction(ROUTES.HOME)
       } else {
         this.setErrorMsg(response.errors[0]);
@@ -107,11 +103,11 @@ class LoginPage extends Component {
           />
         </ContentBlock>
         <ContentBlock>
-          <NavigationAction ref={this.navigationRef}/>
           <InputButton onClick={this.handleSignupButton}>Sign up</InputButton>
           <InputButton onClick={this.handleLoginButton}>
             Login
           </InputButton>
+          <NavigationAction oi={'oie'} ref={this.navigationRef}/>
           {(errorMessage && errorMessage.length > 0) ? (
             <AlertText>
               { errorMessage }
