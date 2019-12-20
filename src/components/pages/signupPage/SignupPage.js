@@ -4,9 +4,69 @@ import MainTitle from '../../elements/mainTitle/MainTitle';
 import ContentBlock from '../../elements/contentBlock/ContentBlock';
 import InputButton from '../../elements/inputButton/InputButton';
 import InputText from '../../elements/inputText/InputText';
+import AlertText from '../../elements/alertText/AlertText';
+
+const yup = require('yup');
+
+let schema = yup.object().shape({
+  username: yup.string().required('Username is required'),
+  password: yup.string().required('Password is required'),
+  passwordConfirmation: yup.string()
+     .oneOf([yup.ref('password'), null], 'Passwords must match')
+});
 
 class SignupPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formValues: {
+        username: '',
+        password: '',
+        passwordConfirmation: ''
+      },
+      formStatus:{
+        isValid: false,
+        errorMessage: ''
+      }
+    };
+  }
+
+  handleChange = ( name, value ) => {
+    const { formValues } = this.state;
+    formValues[name] = value;
+    this.setState({ formValues });
+  };
+
+  validateForm = () => {
+    const { formValues: {username, password, passwordConfirmation}, formStatus } = this.state;
+    const setErrorMsg = (val) => {
+      formStatus.errorMessage = val;
+      this.setState({ formStatus })
+    }
+    const validatedForm = () => {
+      formStatus.errorMessage = '';
+      formStatus.isValid = true;
+      this.setState({ formStatus })
+    }
+    
+    return schema
+      .validate({
+        username,
+        password,
+        passwordConfirmation
+        },
+        { abortEarly: true })
+      .then(function() {
+        validatedForm();
+      })
+      .catch(function(err) {
+        console.log(err);
+        setErrorMsg (err.errors[0])
+      });
+  };
+
   render() {
+    const { formStatus:{errorMessage} } = this.state;
     return (
       <PageContainer>
         <MainTitle>
@@ -16,19 +76,34 @@ class SignupPage extends React.Component {
           <InputText
             inputLabel={'Username'}
             inputType="text"
+            name={'username'}
+            onChange={this.handleChange}
           />
           <InputText
             inputLabel={'Password'}
             inputType="password"
+            name={'password'}
+            onChange={this.handleChange}
           />
           <InputText
-            inputLabel={'Password confirmation'}
+            inputLabel={'Password Confirmation'}
             inputType="password"
+            name={'passwordConfirmation'}
+            onChange={this.handleChange}
           />
         </ContentBlock>
         <ContentBlock>
           <InputButton>Cancel</InputButton>
-          <InputButton>Sign up</InputButton>
+          <InputButton
+            onClick={this.validateForm}
+          >
+            Sign up
+          </InputButton>
+          {errorMessage && 
+            <AlertText>
+              { errorMessage }
+            </AlertText>
+          }
         </ContentBlock>
       </PageContainer>
     );

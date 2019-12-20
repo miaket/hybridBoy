@@ -4,17 +4,27 @@ import './styles/InputText.scss';
 import { TextField } from '@material-ui/core';
 
 const InputText = ({
+  name,
+  onChange,
   inputLabel,
   inputType
-}) => (
-  <div className="InputTextWrapper">
-    <TextField
-      id="standard-helperText"
-      label={inputLabel}
-      type={inputType}
-    />
-  </div>
-);
+}) => {
+  const onChangeHandler = (event) => {
+    onChange(name, event.target.value)
+  }
+
+  return (
+    <div className="InputTextWrapper">
+      <TextField
+        name={name}
+        id="standard-helperText"
+        label={inputLabel}
+        type={inputType}
+        onChange={event => onChangeHandler(event)}
+      />
+    </div>
+  )
+};
 
 InputText.propTypes = {
   inputLabel: PropTypes.string,

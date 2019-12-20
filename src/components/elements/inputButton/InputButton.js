@@ -13,7 +13,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const InputButton = ({
-  children
+  children,
+  onClick
 }) => {
   const classes = useStyles();
   return (
@@ -21,7 +22,9 @@ const InputButton = ({
     <Button
       className={`${classes.root}`}
       variant="contained"
-      color="primary">
+      color="primary"
+      onClick={e => onClick()}
+    >
       { children }
     </Button>
   </div>
