@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-named-as-default */
 import { NavLink, Route, Switch, Router } from "react-router-dom";
-import HomePageContainer from './pages/homePage/HomePageContainer';
+import HomePage from './pages/homePage/HomePage';
 import LoginPage from './pages/loginPage/LoginPage';
 import SignupPage from './pages/signupPage/SignupPage';
 import ErrorPage from './pages/errorPage/ErrorPage';
@@ -32,7 +32,7 @@ class App extends React.Component {
             <NavLink to={ROUTES.ERROR} activeStyle={activeStyle}>Error</NavLink>
           </div>
             <Switch>
-              <Route exact path={ROUTES.HOME} component={HomePageContainer} />
+              <Route exact path={ROUTES.HOME} component={HomePage} />
               <Route path={ROUTES.LOGIN} component={LoginPage} />
               <Route path={ROUTES.SIGNUP} component={SignupPage} />
               <Route path={ROUTES.ERROR} component={ErrorPage} />
