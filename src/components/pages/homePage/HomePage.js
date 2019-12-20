@@ -28,7 +28,7 @@ class HomePage extends React.Component {
         <ContentBlock
           flexDirection={true}
         >
-          {dishes && dishes.map((dish, key) => (
+          {(dishes.length > 0) && dishes.map((dish, key) => (
             <CardImage
               key={key}
               image={dish.image}
@@ -42,7 +42,7 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
-  actions: PropTypes.object.isRequired,
+  // getDishes: PropTypes.func.isRequired,
   // funds: PropTypes.number.isRequired,
 };
 
