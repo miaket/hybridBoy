@@ -108,7 +108,7 @@ class LoginPage extends Component {
           <InputButton onClick={this.handleLoginButton}>
             Login
           </InputButton>
-          <NavigationAction oi={'oie'} ref={this.navigationRef}/>
+          <NavigationAction ref={this.navigationRef}/>
           {(errorMessage && errorMessage.length > 0) ? (
             <AlertText>
               { errorMessage }

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   View,
 } from 'react-native';
@@ -12,13 +11,5 @@ const PageContainer = ({
     { children }
   </View>
 );
-
-PageContainer.propTypes = {
-  children: PropTypes.element
-};
-
-PageContainer.defaultProps = {
-  children: <View />
-};
 
 export default PageContainer;

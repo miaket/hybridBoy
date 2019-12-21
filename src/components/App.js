@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-named-as-default */
 import React from "react";
-import { NavLink, Route, Switch, Router } from "react-router-dom";
+import { Route, Switch, Router } from "react-router-dom";
 import { connect } from 'react-redux';
 import HomePage from './pages/homePage/HomePage';
 import LoginPage from './pages/loginPage/LoginPage';
@@ -10,7 +10,6 @@ import ErrorPage from './pages/errorPage/ErrorPage';
 import NotFoundPage from './NotFoundPage';
 import ROUTES from '../constants/ROUTES';
 import PropTypes from "prop-types";
-import { hot } from "react-hot-loader";
 import history from "../utils/navigationService/NavigationService";
 import RedirectRoute from './RedirectRoute';
 
@@ -21,20 +20,9 @@ import RedirectRoute from './RedirectRoute';
 class App extends React.Component {
   render() {
     const { isLogged } = this.props;
-    console.log('isLogged', this.props.isLogged)
-    const activeStyle = { color: 'blue' };
     return (
       <Router history={history}>
         <div>
-          <div>
-            <NavLink exact to={ROUTES.HOME} activeStyle={activeStyle}>Home</NavLink>
-            {' | '}
-            <NavLink to={ROUTES.LOGIN} activeStyle={activeStyle}>Login</NavLink>
-            {' | '}
-            <NavLink to={ROUTES.SIGNUP} activeStyle={activeStyle}>Signup</NavLink>
-            {' | '}
-            <NavLink to={ROUTES.ERROR} activeStyle={activeStyle}>Error</NavLink>
-          </div>
             <Switch>
               <RedirectRoute
                 redirectionRoute={ROUTES.LOGIN}

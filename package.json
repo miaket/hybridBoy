@@ -9,7 +9,7 @@
   },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
-    "start": "concurrently -k -r -s first \"npm run open:src\" \"npm run lint:watch\"",
+    "start": "concurrently -k -r -s first \"npm run open:src\"",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",

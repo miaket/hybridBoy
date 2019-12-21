@@ -10,12 +10,4 @@ const pageContainer = ({
   </div>
 );
 
-pageContainer.propTypes = {
-  children: PropTypes.element
-};
-
-pageContainer.defaultProps = {
-  children: <div />
-};
-
 export default pageContainer;

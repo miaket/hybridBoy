@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './styles/mainTitle.scss';
 
 const mainTitle = ({
@@ -9,13 +8,5 @@ const mainTitle = ({
     { children }
   </h1>
 );
-
-mainTitle.propTypes = {
-  children: PropTypes.string
-};
-
-mainTitle.defaultProps = {
-  children: 'Title'
-};
 
 export default mainTitle;
