@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getDishes } from '../../../reducers/dishesReducer';
@@ -40,11 +39,6 @@ class HomePage extends React.Component {
     );
   }
 }
-
-HomePage.propTypes = {
-  // getDishes: PropTypes.func.isRequired,
-  // funds: PropTypes.number.isRequired,
-};
 
 const mapStateToProps = (state) => {
   return {

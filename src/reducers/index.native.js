@@ -1,14 +1,10 @@
 import { combineReducers } from 'redux';
-import fooReducer from './fooReducer';
-import barReducer from './barReducer';
-import walletReducer from './walletReducer';
 import dishesReducer from './dishesReducer';
+import authReducer from './authReducer';
 
 const rootReducer = () => combineReducers({
-  foo: fooReducer,
-  bar: barReducer,
-  wallet: walletReducer,
-  dishes: dishesReducer
+  dishes: dishesReducer,
+  appAuth: authReducer
 });
 
 export default rootReducer;
