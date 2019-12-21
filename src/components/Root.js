@@ -10,6 +10,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
+          {console.log('root', store)}
           <App />
         </ConnectedRouter>
       </Provider>

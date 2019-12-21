@@ -7,15 +7,16 @@ import NavigationService from '../utils/navigationService/NavigationService.nati
 import HomePage from './pages/homePage/HomePage';
 import SignupPage from './pages/signupPage/SignupPage';
 import LoginPage from './pages/loginPage/LoginPage';
+import ROUTES from '../constants/ROUTES';
 
 const MainNavigator = createStackNavigator(
   {
-    Home: {screen: HomePage},
-    Signup: {screen: SignupPage},
-    Login: {screen: LoginPage},
+    [ROUTES.HOME]: {screen: HomePage},
+    [ROUTES.SIGNUP]: {screen: SignupPage},
+    [ROUTES.LOGIN]: {screen: LoginPage},
   },
   {
-    initialRouteName: 'Signup',
+    initialRouteName: ROUTES.LOGIN,
     headerMode: 'none',
     transitionConfig
   }

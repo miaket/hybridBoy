@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import './styles/InputButton.scss';
+import './styles/inputButton.scss';
 
 const useStyles = makeStyles(theme => ({
   root: {

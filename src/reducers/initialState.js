@@ -10,4 +10,11 @@ export default {
   wallet: {
     funds: null,
   },
+  dishes: {
+    data:[]
+  },
+  appAuth: {
+    isLogged: false,
+    isSignedup: false
+  }
 };
