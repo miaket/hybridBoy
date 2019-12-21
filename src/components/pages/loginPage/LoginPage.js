@@ -68,8 +68,9 @@ class LoginPage extends Component {
     this.validateForm().then((response) =>{
       if (response === true){
         this.setErrorMsg('');
-        loginRequest(formValues);
-        this.navigationRef.current.navigationFunction(ROUTES.HOME)
+        loginRequest(formValues).then(() => {
+          this.navigationRef.current.navigationFunction(ROUTES.HOME)
+        });
       } else {
         this.setErrorMsg(response.errors[0]);
       }
